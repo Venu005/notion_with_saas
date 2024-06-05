@@ -15,6 +15,13 @@
       "when": 1717526254188,
       "tag": "0001_serious_karen_page",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1717563653020,
+      "tag": "0002_loving_the_spike",
+      "breakpoints": true
     }
   ]
 }
