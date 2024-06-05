@@ -12,5 +12,22 @@ export async function middleware(req: NextRequest) {
       return NextResponse.redirect(new URL("/login", req.url));
     }
   }
-  
+  const emailLinkError = "Email link is invalid or has an error";
+  if (
+    req.nextUrl.searchParams.get("error_description") === emailLinkError &&
+    req.nextUrl.pathname !== "/signup"
+  ) {
+    new URL(
+      `/signup?error_description=${req.nextUrl.searchParams.get(
+        "error_description"
+      )}`,
+      req.url
+    );
+  }
+  if (["/login", "/signup"].includes(req.nextUrl.pathname)) {
+    if (session) {
+      return NextResponse.redirect(new URL("/dashboard", req.url));
+    }
+  }
+  return res;
 }
